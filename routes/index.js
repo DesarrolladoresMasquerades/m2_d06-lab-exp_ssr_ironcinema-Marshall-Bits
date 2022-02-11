@@ -15,4 +15,12 @@ router.get('/movies', (req, res, next)=>{
     .catch((err)=>"Error getting movies list" + err)
 })
 
+router.get('/movies/:id', (req, res, next)=>{
+    const id = req.params.id
+    Movie.findById(id)
+    .then((movie)=>{
+        res.render('movie', movie)
+    })
+})
+
 module.exports = router;
